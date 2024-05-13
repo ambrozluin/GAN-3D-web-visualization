@@ -1,0 +1,76 @@
+{% extends "base/master.html" %}
+
+
+{% block content %}
+
+ <!-- ======= Login Section ======= -->
+    <section id="generate" class="box-view section-bg">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+          <h2>Generate models</h2>
+          <p>Specify the input parameters</p>
+        </div>
+
+
+          <div class="col-lg-12 col-md-6 mt-6 mt-md-0">
+            <div class="box recommended" data-aos="zoom-in">
+              <span class="recommended-badge">Recommended</span>
+              <h3>Generate now</h3>
+              <h2>Please enter</h2>
+                <form id="generate-form" action="/generate" method="POST" role="form" class="django-template-form" data-aos="fade-left">
+                {% csrf_token %}
+                  <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
+                      <input type="text" name="username" class="form-control" id="par1" placeholder="Parameter1" required>
+                    </div>
+                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
+                      <input type="text" class="form-control" name="par2" id="par2" placeholder="Parameter2" required>
+                    </div>
+                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
+                     <input type="text" name="par3" class="form-control" id="par3" placeholder="Parameter3" required>
+                    </div>
+                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
+                        <input type="number" class="form-control" name="par3" id="par4" placeholder="Number" required>
+                    </div>
+                  </div>
+                  <div class="btn-wrap">
+                    <button type="submit" form="generate-form" class="btn-buy">Generate</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End Login Section -->
+
+
+<!-- ======= Visdom view ======= -->
+    <section id="visdom-view" class="box-view section-bg">
+      <div class="container">
+
+          <div class="col-lg-12 col-md-6 mt-6 mt-md-0">
+            <div class="box recommended" data-aos="zoom-in">
+                  <div class="row justify-content-center">
+                    <h3>View generated 3D models in visdom now</h3>
+                    <h2></h2>
+                  </div>
+                    <form action="/open-visdom">
+                      <div class="btn-wrap">
+                       <button id="view-in-visdom-btn" class="btn btn-primary">View in Visdom</button>
+                      </div>
+                   </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End Login Section -->
+
+    {% include "base/pre-generated.html" %}
+
+{% endblock %}
+
+
+

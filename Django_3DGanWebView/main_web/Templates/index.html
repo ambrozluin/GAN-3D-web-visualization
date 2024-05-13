@@ -1,0 +1,15 @@
+{% extends "base/master.html" %}
+
+  {% block hero %}
+
+    {% include "base/hero.html" %}
+
+  {% endblock %}
+
+{% block content %}
+
+    {% include "users/login.html" %}
+
+    {% include "base/pre-generated.html" %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+
+/Django_3DGanWebView/main_web/__pycache__
+/Django_3DGanWebView/TrainedModel/
+Django_3DGanWebView/main_web/tester.py
+Django_3DGanWebView/main_web/Templates/obsolete-register.html
+Django_3DGanWebView/main_web/Templates/obsolete-index.html
+Django_3DGanWebView/main_web/Templates/obsolete-dashboard.html
+/Django_3DGanWebView/main_web/static
+Django_3DGanWebView/main_web/outputs/
+Django_3DGanWebView/main_web/migrations/
+Django_3DGanWebView/db.sqlite3
+/Django_3DGanWebView/Django_3DGanWebView/__pycache__
+Django_3DGanWebView/Django_3DGanWebView/settings.py
+Django_3DGanWebView/main_web/params.py
+Django_3DGanWebView/main_web/model.py

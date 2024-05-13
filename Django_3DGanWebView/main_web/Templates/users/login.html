@@ -1,0 +1,55 @@
+<!-- ======= Login Section ======= -->
+<section id="login" class="box-view section-bg">
+  <div class="container">
+
+    <div class="section-title" data-aos="fade-up">
+      <h2>Create new account / Login</h2>
+      <p>Please login to generate new models</p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 col-md-6">
+        <div class="box" data-aos="zoom-in" data-aos-delay="100">
+          <h3>Don't have an account?</h3>
+          <h2>Create new account</h2>
+          <div class="btn-wrap">
+            <a href="/register" class="btn-buy">Register Now</a>
+          </div>
+          <ul>
+            <li></li>
+            <li class="na"></li>
+            <li></li>
+            <li>Free registration</li>
+            <li>Click the upper button</li>
+            <li></li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-md-6 mt-4 mt-md-0">
+        <div class="box recommended" data-aos="zoom-in">
+          <span class="recommended-badge">Recommended</span>
+          <h3>Login now</h3>
+          <h2>Please enter</h2>
+          <form id="login-form" method="POST" novalidate class="django-template-form" data-aos="fade-left">
+              {% csrf_token %}
+              <div class="row justify-content-center">
+                  <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
+                      {{ form.username }}
+                  </div>
+                  <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
+                      {{ form.password }}
+                  </div>
+              </div>
+              <div class="btn-wrap">
+                  <input type="submit" value="Login now" class="btn-buy">
+              </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End Login Section -->
