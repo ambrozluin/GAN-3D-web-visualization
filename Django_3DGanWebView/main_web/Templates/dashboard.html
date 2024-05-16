@@ -18,22 +18,23 @@
               <span class="recommended-badge">Recommended</span>
               <h3>Generate now</h3>
               <h2>Please enter</h2>
-                <form id="generate-form" action="/generate" method="POST" role="form" class="django-template-form" data-aos="fade-left">
-                {% csrf_token %}
-                  <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
-                      <input type="text" name="username" class="form-control" id="par1" placeholder="Parameter1" required>
-                    </div>
-                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
-                      <input type="text" class="form-control" name="par2" id="par2" placeholder="Parameter2" required>
-                    </div>
-                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
-                     <input type="text" name="par3" class="form-control" id="par3" placeholder="Parameter3" required>
-                    </div>
-                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">
-                        <input type="number" class="form-control" name="par3" id="par4" placeholder="Number" required>
-                    </div>
-                  </div>
+                <form id="generate-form" action="/trigger_generator" class="django-template-form" data-aos="fade-left">
+<!--                <form id="generate-form" action="/trigger_generator" method="POST" role="form" class="django-template-form" data-aos="fade-left">-->
+<!--                {% csrf_token %}-->
+<!--                  <div class="row justify-content-center">-->
+<!--                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">-->
+<!--                      <input type="text" name="par1" class="form-control" id="par1" placeholder="Parameter1" required>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">-->
+<!--                      <input type="text" class="form-control" name="par2" id="par2" placeholder="Parameter2" required>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">-->
+<!--                     <input type="text" name="par3" class="form-control" id="par3" placeholder="Parameter3" required>-->
+<!--                    </div>-->
+<!--                    <div class="col-lg-8 col-md-6 mt-4 mt-md-6 form-group">-->
+<!--                        <input type="number" class="form-control" name="par4" id="par4" placeholder="Number" required>-->
+<!--                    </div>-->
+<!--                  </div>-->
                   <div class="btn-wrap">
                     <button type="submit" form="generate-form" class="btn-buy">Generate</button>
                   </div>
@@ -68,7 +69,7 @@
       </div>
     </section><!-- End Login Section -->
 
-    {% include "base/pre-generated.html" %}
+    {% include "base/generated.html" %}
 
 {% endblock %}
 

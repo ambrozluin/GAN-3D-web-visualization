@@ -2,16 +2,17 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, GenerateForm
+from .models import GanGeneratedModel
 from django.contrib import messages
 from django.http import HttpResponse
 from django.template import loader
 from django.core.signals import request_finished
 from django.dispatch import receiver
 from django.views.decorators.csrf import csrf_protect
-# from .models import Member
-#from tester import tester
+from .generate import generate, render_generated
 import subprocess
+
 
 visdom_init_subprocess = None
 
@@ -44,23 +45,29 @@ def index(request):
 # return HttpResponse(template.render())
 
 def dashboard(request):
-  template = loader.get_template('dashboard.html')
-  return HttpResponse(template.render())
+  if request.method == 'GET':
+
+    # getting all generate images.
+    ggm = GanGeneratedModel.objects.all()
+    return render(request, 'dashboard.html', {'gan_images': ggm})
 
 def trigger_generator(request):
   # Start Visdom server using subprocess
-  tester()
+  status = generate()
   # Redirect to Visdom page
-  return redirect('index')
+  if (status):
+    ggm = GanGeneratedModel.objects.all()
+    return render(request, 'dashboard.html', {'gan_images': ggm})
 
 def open_visdom(request):
   global visdom_init_subprocess   # Start Visdom server using subprocess
 
-
-
   visdom_init_subprocess = subprocess.Popen(["python", "-m", "visdom.server"])
 
+  render_generated()
+
   return redirect('http://localhost:8097')   # Redirect to Visdom page
+
 
 
 # def open_visdom(request):
@@ -119,6 +126,33 @@ def sign_out(request):
     return redirect('index')
 
 
+# upload images
+
+def gan_image_view(request):
+
+    if request.method == 'POST':
+      form = GenerateForm(request.POST, request.FILES)
+
+      if form.is_valid():
+        form.save()
+        return redirect('success')
+    else:
+      form = GenerateForm()
+    return render(request, 'gan_image_form.html', {'form': form})
+
+
+def success(request):
+  return HttpResponse('successfully uploaded')
+
+
+# for displaying images
+
+def display_generated_images(request):
+  if request.method == 'GET':
+
+    # getting all generate images.
+    ggm = GanGeneratedModel.objects.all()
+    return render(request, 'display_generated_images.html', {'gan_images': ggm})
 
 
 # ------------ END ------------------------

@@ -13,3 +13,5 @@ Django_3DGanWebView/db.sqlite3
 Django_3DGanWebView/Django_3DGanWebView/settings.py
 Django_3DGanWebView/main_web/params.py
 Django_3DGanWebView/main_web/model.py
+/Django_3DGanWebView/outputs
+/Django_3DGanWebView/media/
