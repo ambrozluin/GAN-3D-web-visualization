@@ -5,9 +5,10 @@
       <h2>View Generated Models</h2>
       <p>Lookup generated images representing points in 3D space.</p>
     </div>
-
+    <p>Generated Count: {{ generated_obj_count }}</p>
     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
         {% for gan_image in gan_images %}
+
             <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div class="portfolio-wrap">
                   <img src="{{ gan_image.generated_Img.url }}" class="img-fluid" alt="">
@@ -15,12 +16,13 @@
                     <h4>{{ gan_image.name }}</h4>
                     <p>{{ gan_image.name }}</p>
                     <div class="portfolio-links">
-                      <a href="{{ gan_image.generated_Img.url }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Model {{ gan_image.name }}"><i class="bx bx-plus"></i></a>
-                      <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                      <a href="{{ gan_image.generated_Img.url }}"  class="portfolio-lightbox" title="Model {{ gan_image.name }}"><i class="bx bx-link"></i></a>
+                      <!--  <a href="portfolio-details.html" title="More Details"><i class="bx bx-plus"></i></a>-->
                     </div>
                   </div>
                 </div>
             </div>
+
         {% endfor %}
     </div>
   </div>

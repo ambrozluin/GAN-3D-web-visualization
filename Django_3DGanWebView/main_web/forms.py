@@ -17,3 +17,4 @@ class GenerateForm(forms.ModelForm):
     class Meta:
         model = GanGeneratedModel
         fields = ['name', 'generated_Img']
+

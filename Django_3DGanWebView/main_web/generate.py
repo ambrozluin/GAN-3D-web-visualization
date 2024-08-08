@@ -13,7 +13,7 @@ from .models import Voxel
 from .params import *
 
 
-def generate(model_name='dcgan_pretrained', logs='first_test', obj_count=9):
+def generate(model_name='dcgan350', logs='first_test', obj_count=9):
     print('Entering Generate')
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -22,7 +22,7 @@ def generate(model_name='dcgan_pretrained', logs='first_test', obj_count=9):
     if not os.path.exists(image_saved_path):
         os.makedirs(image_saved_path)
 
-    save_file_path = params.output_dir + '/' +model_name
+    save_file_path = params.output_dir + '/' + model_name
     pretrained_file_path_G = save_file_path + '/' + logs + '/models/G.pth'
     pretrained_file_path_D = save_file_path + '/' + logs + '/models/D.pth'
 
@@ -66,9 +66,10 @@ def generate(model_name='dcgan_pretrained', logs='first_test', obj_count=9):
     return True
 
 # sends data to visdom server
-def render_generated():
+def render_generated(render_count: int):
     vis = visdom.Visdom()
 
+    print('Here' + str(render_count))
     all_voxels = read_all_samples_from_db()
 
     # Accessing name and data columns of each instance
@@ -98,6 +99,7 @@ def save_sample_to_db(data_sample, sample_name):
 
 def read_all_samples_from_db():
     # Retrieve all voxels from db
+
     all_voxels = Voxel.objects.all()
 
     return all_voxels

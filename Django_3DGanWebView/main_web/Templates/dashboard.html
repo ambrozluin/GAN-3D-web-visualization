@@ -18,7 +18,12 @@
               <span class="recommended-badge">Recommended</span>
               <h3>Generate now</h3>
               <h2>Please enter</h2>
-                <form id="generate-form" action="/trigger_generator" class="django-template-form" data-aos="fade-left">
+                <form id="generate-form" method="POST" action="/trigger_generator" class="django-template-form" data-aos="fade-left">{% csrf_token %}
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-12 mt-4 mt-md-6 form-group">
+                            <input type="number" class="form-control" name="generated-obj-count" id="generated-obj-count" placeholder="Number: " required>
+                        </div>
+                    </div>
 <!--                <form id="generate-form" action="/trigger_generator" method="POST" role="form" class="django-template-form" data-aos="fade-left">-->
 <!--                {% csrf_token %}-->
 <!--                  <div class="row justify-content-center">-->

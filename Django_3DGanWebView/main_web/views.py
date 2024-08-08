@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, RegisterForm, GenerateForm
 from .models import GanGeneratedModel
 from django.contrib import messages
@@ -15,7 +15,7 @@ import subprocess
 
 
 visdom_init_subprocess = None
-
+global_genereted_count = 6
 
 # -------3D Gan Web--------------------------------------------
 def index(request):
@@ -45,26 +45,50 @@ def index(request):
 # return HttpResponse(template.render())
 
 def dashboard(request):
+  global global_genereted_count
   if request.method == 'GET':
 
     # getting all generate images.
     ggm = GanGeneratedModel.objects.all()
-    return render(request, 'dashboard.html', {'gan_images': ggm})
+    ggm_selected = ggm[:global_genereted_count]  # Get only the specified number of objects
+    return render(request, 'dashboard.html', {'gan_images': ggm_selected, 'generated_obj_count': global_genereted_count})
 
 def trigger_generator(request):
-  # Start Visdom server using subprocess
-  status = generate()
-  # Redirect to Visdom page
-  if (status):
+  global global_genereted_count
+  if request.method == 'POST':
+    global_genereted_count = request.POST.get('generated-obj-count')
+    print(global_genereted_count)
+    if global_genereted_count is not None:
+      try:
+        generated_obj_count = int(global_genereted_count)
+
+        # Generate with request parameters
+        status = generate(obj_count=generated_obj_count)
+
+        # when genereted get objects
+        print(status)
+        if (status):
+          ggm = GanGeneratedModel.objects.all()
+          ggm_selected = ggm[:generated_obj_count]  # Get only the specified number of objects
+          return render(request, 'dashboard.html', {'gan_images': ggm_selected, 'generated_obj_count': global_genereted_count})
+      except ValueError:
+        return render(request, 'dashboard.html', {'error': 'Invalid number provided.'})
+    else:
+      return render(request, 'dashboard.html', {'error': 'Number is required.'})
+  else:
     ggm = GanGeneratedModel.objects.all()
-    return render(request, 'dashboard.html', {'gan_images': ggm})
+    ggm_selected = ggm[:global_genereted_count]  # Get only the specified number of objects
+
+    return render(request, 'dashboard.html', {'gan_images': ggm_selected, 'generated_obj_count': global_genereted_count})
+
 
 def open_visdom(request):
   global visdom_init_subprocess   # Start Visdom server using subprocess
+  global global_genereted_count
 
   visdom_init_subprocess = subprocess.Popen(["python", "-m", "visdom.server"])
 
-  render_generated()
+  render_generated(render_count=global_genereted_count)
 
   return redirect('http://localhost:8097')   # Redirect to Visdom page
 
@@ -115,15 +139,9 @@ def sign_up(request):
 
 
 def sign_out(request):
-  if request.method == "POST":
-    username = request.POST["username"]
-    password = request.POST["password"]
-    user = authenticate(request, username=username, password=password)
-  if user is not None:
-    login(request, user)
-    return redirect('dashboard')
-  else:
-    return redirect('index')
+  logout(request)
+  return redirect("index")
+  # Redirect to a success page.
 
 
 # upload images
