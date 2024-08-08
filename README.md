@@ -1,102 +1,40 @@
 **WEB APPLICATION FOR RENDERING 3D MODELS TROUGH GENERATIVE ADVERSARIAL NETWORK**
-Author: AMBROŽ LUIN
+-------------------------------------------------------
 
-Dependencies:
+**Author:** Ambrož Luin
 
-Package              Version
--------------------- ---------
-absl-py              2.1.0
-asgiref              3.3.4
-attrs                23.2.0
-backcall             0.2.0
-beautifulsoup4       4.12.3
-certifi              2022.12.7
-charset-normalizer   3.3.2
-click                8.1.7
-colorama             0.4.6
-comm                 0.1.4
-ConfigArgParse       1.7
-cycler               0.11.0
-dash                 2.15.0
-dash-core-components 2.0.0
-dash-html-components 2.0.0
-dash-table           5.0.0
-decorator            5.1.1
-Django               3.2.15
-django-bootstrap-v5  1.0.11
-fastjsonschema       2.19.1
-Flask                2.2.5
-fonttools            4.25.0
-grpcio               1.42.0
-idna                 3.7
-importlib-metadata   6.7.0
-importlib-resources  5.12.0
-ipython              7.34.0
-ipywidgets           8.1.2
-itsdangerous         2.1.2
-jedi                 0.19.1
-Jinja2               3.1.3
-jsonpatch            1.33
-jsonpointer          2.4
-jsonschema           4.17.3
-jupyter_core         4.12.0
-jupyterlab_widgets   3.0.10
-kiwisolver           1.3.2
-Markdown             3.2.1
-MarkupSafe           2.1.5
-matplotlib           3.5.3
-matplotlib-inline    0.1.6
-mkl-service          2.4.0
-munkres              1.1.4
-nbformat             5.7.0
-nest-asyncio         1.6.0
-numpy                1.21.6
-open3d               0.17.0
-packaging            23.2
-parso                0.8.4
-pickleshare          0.7.5
-Pillow               9.3.0
-pip                  24.0
-pkgutil_resolve_name 1.3.10
-platformdirs         4.0.0
-plotly               5.18.0
-pooch                1.8.1
-prompt-toolkit       3.0.43
-protobuf             3.20.3
-psycopg2             2.9.3
-Pygments             2.17.2
-pyparsing            3.1.2
-PyQt5                5.12.3
-PyQt5_sip            4.19.18
-PyQtChart            5.12
-PyQtWebEngine        5.12.1
-pyrsistent           0.19.3
-python-dateutil      2.9.0
-pytz                 2022.7
-pywin32              306
-requests             2.31.0
-retrying             1.3.4
-scikit-image         0.17.1
-scipy                1.7.3
-setuptools           65.6.3
-six                  1.16.0
-soupsieve            2.4.1
-sqlparse             0.4.3
-tenacity             8.2.3
-tensorboard          1.15.0
-tensorboardX         2.2
-torch                1.6.0
-torchvision          0.7.0
-tornado              6.2
-tqdm                 4.64.1
-traitlets            5.9.0
-typing_extensions    4.7.1
-urllib3              2.0.7
-visdom               0.2.4
-wcwidth              0.2.13
-websocket-client     1.6.1
-Werkzeug             2.2.3
-wheel                0.34.2
-widgetsnbextension   4.0.10
-zipp                 3.15.0
+**Student:** UP FAMNIT
 
+**Abstract:**
+Three-dimensional (3D) objects are an increasingly important part of computer graphics. They have a specific shape, accurately imitating the physical properties and geometry of everyday objects, which they try to represent as closely as possible. Objects can be created manually, using specialised software, or generated using generative algorithms. 
+A Generative Adversarial Network (GAN) is a deep learning architecture consisting of two neural networks, a generator and a discriminator. During the learning process, these two networks compete with each other. The generator's task is to iteratively generate new input data for the discriminator, which learns to distinguish between real and generated examples.
+This final thesis aims to demonstrate the use of a 3D GAN model in the generation of new 3D objects and to successfully integrate this concept in a web application.
+With the help of this application or its graphical interface, we can carry out interactive graphical representation of the generation of a specific 3D object. The user of our web application can visually assess the success of the 3D object generation
+
+**Important Dependecies:**
+
+| Package                 | Version   |
+|-------------------------|-----------|
+| Flask                   | 2.2.5     |
+| Django                  | 3.2.15    |
+| requests                | 2.31.0    |
+| numpy                   | 1.21.6    |
+| pandas                  | 1.5.3     |
+| matplotlib              | 3.5.3     |
+| scikit-image            | 0.17.1    |
+| scipy                   | 1.7.3     |
+| PyQt5                   | 5.12.3    |
+| torch                   | 1.6.0     |
+| torchvision             | 0.7.0     |
+| Jinja2                  | 3.1.3     |
+| beautifulsoup4          | 4.12.3    |
+| plotly                  | 5.18.0    |
+| protobuf                | 3.20.3    |
+| setuptools              | 65.6.3    |
+| ipywidgets              | 8.1.2     |
+| tensorboard             | 1.15.0    |
+| dash                    | 2.15.0    |
+| Werkzeug                | 2.2.3     |
+| SQLAlchemy              | 1.4.36    |
+| urllib3                 | 2.0.7     |
+| wheel                   | 0.34.2    |
